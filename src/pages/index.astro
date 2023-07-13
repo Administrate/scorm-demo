@@ -10,8 +10,10 @@ import { DemoPage } from "@/components";
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>LRN</title>
+		<script is:inline async defer type="module" src="https://lms-ux-assets.getadministrate.com/ux/embedded-scorm-player-staging/embedded-scorm-player.js" />
+		<script is:inline async defer src="https://lms-ux-assets.getadministrate.com/ux/embedded-video-player-staging/bundle.js"></script>
 	</head>
 	<body>
-		<DemoPage />
+		<DemoPage client:load />
 	</body>
 </html>
