@@ -2,7 +2,10 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/307a88fa-e1c3-43fd-9aa6-342c7bf07ecf/deploy-status)](https://app.netlify.com/sites/scorm-demo/deploys)
 
-Build using Astro, Tailwind, pnpm, Shadcn-ui, and React.
+A sample React SPA that connects to [Hisham's Staging Naruto TMS](https://naruto.stagingadministrateapp.com) and LMS Portal to
+showcase our embedded widgets.
+
+Built using Astro, Tailwind, pnpm, Shadcn-ui, and React.
 
 ## Configuration
 
