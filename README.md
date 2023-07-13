@@ -1,5 +1,7 @@
 # Content Player Demo
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/307a88fa-e1c3-43fd-9aa6-342c7bf07ecf/deploy-status)](https://app.netlify.com/sites/scorm-demo/deploys)
+
 Build using Astro, Tailwind, pnpm, Shadcn-ui, and React.
 
 ## Configuration
