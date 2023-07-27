@@ -26,6 +26,20 @@ export const mountScorm = (
     eventId: EVENT_ID,
     onError: handleError,
     className: iframeClassName,
+    /*
+    loadingOption: {
+      type: "text",
+      text: "🏃 Delivering your Learning Content 🚀",
+    },*/
+    loadingOption: {
+      type: "html",
+      htmlString:
+        '<div class="lds-grid"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>  <div class="">',
+    },
+    /*loadingOption: {
+      type: "nodeId",
+      templateId: "scorm-placeholder-loader",
+    },*/
     styleOverrides: {},
   });
 };

@@ -1,19 +1,108 @@
 ---
-import '@/styles/globals.css'
+import "@/styles/globals.css";
 import { DemoPage } from "@/components";
+import Loader from "@/components/loader.astro";
 ---
 
 <html lang="en" class="dark" style="color-scheme: dark;">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/png" href="/favicon.png" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>LRN</title>
-		<script is:inline async defer type="module" src="https://lms-ux-assets.getadministrate.com/ux/embedded-scorm-player-staging/embedded-scorm-player.js" />
-		<script is:inline async defer src="https://lms-ux-assets.getadministrate.com/ux/embedded-video-player-staging/bundle.js"></script>
-	</head>
-	<body>
-		<DemoPage client:load />
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>LRN</title>
+    <script
+      is:inline
+      async
+      defer
+      type="module"
+      src="https://lms-ux-assets.getadministrate.com/ux/embedded-scorm-player-staging/embedded-scorm-player.js?q=latest"
+    ></script>
+    <script
+      is:inline
+      async
+      defer
+      src="https://lms-ux-assets.getadministrate.com/ux/embedded-video-player-staging/bundle.js"
+    ></script>
+    <style is:global>
+       {
+        /* custom html loading */
+      }
+      .lds-grid {
+        display: inline-block;
+        position: relative;
+        width: 80px;
+        height: 80px;
+        margin: 12rem 50%;
+      }
+      .lds-grid div {
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: #cef;
+        animation: lds-grid 1.2s linear infinite;
+      }
+      .lds-grid div:nth-child(1) {
+        top: 8px;
+        left: 8px;
+        animation-delay: 0s;
+      }
+      .lds-grid div:nth-child(2) {
+        top: 8px;
+        left: 32px;
+        animation-delay: -0.4s;
+      }
+      .lds-grid div:nth-child(3) {
+        top: 8px;
+        left: 56px;
+        animation-delay: -0.8s;
+      }
+      .lds-grid div:nth-child(4) {
+        top: 32px;
+        left: 8px;
+        animation-delay: -0.4s;
+      }
+      .lds-grid div:nth-child(5) {
+        top: 32px;
+        left: 32px;
+        animation-delay: -0.8s;
+      }
+      .lds-grid div:nth-child(6) {
+        top: 32px;
+        left: 56px;
+        animation-delay: -1.2s;
+      }
+      .lds-grid div:nth-child(7) {
+        top: 56px;
+        left: 8px;
+        animation-delay: -0.8s;
+      }
+      .lds-grid div:nth-child(8) {
+        top: 56px;
+        left: 32px;
+        animation-delay: -1.2s;
+      }
+      .lds-grid div:nth-child(9) {
+        top: 56px;
+        left: 56px;
+        animation-delay: -1.6s;
+      }
+      @keyframes lds-grid {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <template id="scorm-placeholder-loader">
+      <Loader />
+    </template>
+    <DemoPage client:load />
+  </body>
 </html>
