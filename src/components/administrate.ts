@@ -4,6 +4,26 @@ import type { CSSProperties } from "react";
  * Declare globals from the administrate widget scripts
  */
 
+interface LoadingTextOption {
+  type: "text";
+  text: string;
+}
+
+interface LoadingHtmlOption {
+  type: "html";
+  htmlString: string;
+}
+
+interface LoadingTemplateOption {
+  type: "nodeId";
+  templateId: string;
+}
+
+export type LoadingOption =
+  | LoadingTextOption
+  | LoadingHtmlOption
+  | LoadingTemplateOption;
+
 interface RenderScormOptions {
   rootId?: string;
   rootElement?: HTMLElement;
@@ -13,6 +33,7 @@ interface RenderScormOptions {
   contentId: string;
   eventId: string;
   className?: string;
+  loadingOption?: LoadingOption;
   styleOverrides?: CSSProperties;
   onError: (error: any) => void;
 }
