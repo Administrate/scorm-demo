@@ -18,4 +18,10 @@ export const ITEMS = [
     thumbnail: "/graduation-hat.jpg",
     title: "Admin Uni Sample",
   },
+  {
+    type: "scorm" as const,
+    id: "Q29udGVudDoxNTk=",
+    thumbnail: "/solar-system-planet-orbits.jpg",
+    title: "Forgerock Chapter 2 Knowledge Check",
+  }
 ];
