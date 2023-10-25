@@ -1,6 +1,8 @@
 import "react";
 
 import { Card, CardDescription, CardHeader, CardTitle } from "./ui/card";
+import { useToast } from "./ui/use-toast";
+import { Toaster } from "./ui/toaster"
 import { H1 } from "./ui/heading";
 import { ITEMS } from "./config";
 import { mountVideo } from "./video";
@@ -10,12 +12,13 @@ const CONTENT_VIEWER_ID = "content-view";
 const IFRAME_CLASSES = "w-[100vw] h-[100vh]";
 
 export const DemoPage = () => {
+  const { toast } = useToast();
   const clickItem = (item: (typeof ITEMS)[number]) => {
     if (item.type === "video") {
       mountVideo(item.id, CONTENT_VIEWER_ID);
     } else {
       // scorm
-      mountScorm(item.id, CONTENT_VIEWER_ID, IFRAME_CLASSES);
+      mountScorm(item.id, CONTENT_VIEWER_ID, IFRAME_CLASSES, toast);
     }
   };
 
@@ -46,6 +49,7 @@ export const DemoPage = () => {
       </div>
 
       <section id={CONTENT_VIEWER_ID} className="min-h-[90vh]"></section>
+      <Toaster />
     </div>
   );
 };

@@ -2,14 +2,11 @@ import { BRAND, EVENT_ID, SIGNED_JWT, PORTAL_URL } from "./config";
 
 const getJwt = () => Promise.resolve(SIGNED_JWT);
 
-function handleError(error: any) {
-  console.error(error.message);
-}
-
 export const mountScorm = (
   contentId: string,
   domId: string,
-  iframeClassName: string
+  iframeClassName: string,
+  toast: any
 ) => {
   const el = document.getElementById(domId);
 
@@ -24,7 +21,27 @@ export const mountScorm = (
     brandId: BRAND,
     contentId: contentId,
     eventId: EVENT_ID,
-    onError: handleError,
+    onError: (error: any) => {
+      toast({
+        title: "⚠️ Error",
+        description: error.message
+      });
+    },
+    onScormFrameLoad: () => {
+      toast({
+        description: "SCORM frame loaded 🚦",
+      });
+    },
+    onPass: () => {
+      toast({
+        description: "You've passed! ✅"
+      });
+    },
+    onFinish: () => {
+      toast({
+        description: "SCORM Finished 👍"
+      });
+    },
     className: iframeClassName,
     /*
     loadingOption: {
