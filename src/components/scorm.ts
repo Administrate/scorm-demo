@@ -2,6 +2,32 @@ import { BRAND, EVENT_ID, SIGNED_JWT, PORTAL_URL } from "./config";
 
 const getJwt = () => Promise.resolve(SIGNED_JWT);
 
+function createOnError(toast: any) {
+  return (error: any) => toast({
+    variant: "destructive",
+    title: "Error!",
+    description: error.message
+  });
+}
+
+function createOnScormFrameLoad(toast: any) {
+  return () => toast({
+    description: "SCORM frame loaded 🚦",
+  });
+}
+
+function createOnPass(toast: any) {
+  return () => toast({
+    description: "You've passed! ✅"
+  });
+}
+
+function createOnFinish(toast: any) {
+  return () => toast({
+    description: "SCORM Finished 👍"
+  });
+}
+
 export const mountScorm = (
   contentId: string,
   domId: string,
@@ -21,27 +47,10 @@ export const mountScorm = (
     brandId: BRAND,
     contentId: contentId,
     eventId: EVENT_ID,
-    onError: (error: any) => {
-      toast({
-        title: "⚠️ Error",
-        description: error.message
-      });
-    },
-    onScormFrameLoad: () => {
-      toast({
-        description: "SCORM frame loaded 🚦",
-      });
-    },
-    onPass: () => {
-      toast({
-        description: "You've passed! ✅"
-      });
-    },
-    onFinish: () => {
-      toast({
-        description: "SCORM Finished 👍"
-      });
-    },
+    onError: createOnError(toast),
+    onScormFrameLoad: createOnScormFrameLoad(toast),
+    onPass: createOnPass(toast),
+    onFinish: createOnFinish(toast),
     className: iframeClassName,
     /*
     loadingOption: {

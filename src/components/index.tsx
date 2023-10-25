@@ -15,7 +15,7 @@ export const DemoPage = () => {
   const { toast } = useToast();
   const clickItem = (item: (typeof ITEMS)[number]) => {
     if (item.type === "video") {
-      mountVideo(item.id, CONTENT_VIEWER_ID);
+      mountVideo(item.id, CONTENT_VIEWER_ID, toast);
     } else {
       // scorm
       mountScorm(item.id, CONTENT_VIEWER_ID, IFRAME_CLASSES, toast);
