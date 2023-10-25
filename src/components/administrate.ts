@@ -24,6 +24,8 @@ export type LoadingOption =
   | LoadingHtmlOption
   | LoadingTemplateOption;
 
+type Callback = (x?: unknown) => void;
+
 interface RenderScormOptions {
   rootId?: string;
   rootElement?: HTMLElement;
@@ -34,8 +36,11 @@ interface RenderScormOptions {
   eventId: string;
   className?: string;
   styleOverrides?: CSSProperties;
-  onError: (error: any) => void;
   loadingOption: LoadingOption;
+  onScormFrameLoad: Callback;
+  onPass: Callback;
+  onError: Callback;
+  onFinish: Callback;
 }
 
 interface RenderVideoOptions {
